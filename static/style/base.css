@@ -1,0 +1,173 @@
+:root {
+    --void: #07080a;
+    --void-2: #0d100d;
+    --bile: #2a3620;
+    --bile-glow: #5c7a3c;
+    --indigo: #211735;
+    --indigo-glow: #7a5fc9;
+    --parchment: #cdd1c2;
+    --parchment-dim: #82897a;
+    --line: rgba(205, 209, 194, 0.08);
+    --card-bg: #12100fee;
+    --font-title: 'IM Fell English SC', 'Georgia', serif;
+    --font-body: 'IM Fell English', 'Georgia', serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: var(--void);
+    font-family: var(--font-body);
+    color: var(--parchment);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 45% 30% at 15% 10%, var(--bile), transparent 65%),
+        radial-gradient(ellipse 40% 35% at 88% 85%, var(--indigo), transparent 65%),
+        repeating-conic-gradient(from 15deg at 50% 40%, rgba(205, 209, 194, 0.015) 0deg 1deg, transparent 1deg 13deg),
+        radial-gradient(ellipse 100% 90% at 50% 50%, transparent 40%, var(--void) 100%);
+}
+
+.sigil {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    z-index: 4;
+    width: 46px;
+    height: 46px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+header {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 2.8rem 1rem 1.3rem;
+    border-bottom: 1px solid var(--line);
+}
+
+header::before {
+    content: "CRONACHE DALL'IGNOTO";
+    display: block;
+    font-family: var(--font-title);
+    font-size: 0.68rem;
+    letter-spacing: 0.4em;
+    color: var(--parchment-dim);
+    margin-bottom: 0.9rem;
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: normal;
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    letter-spacing: 0.1em;
+    color: var(--parchment);
+    text-shadow: 0 0 18px var(--indigo-glow), 0 0 40px rgba(122, 95, 201, 0.15);
+    animation: flicker 7s infinite ease-in-out;
+}
+
+@keyframes flicker {
+
+    0%,
+    92%,
+    100% {
+        text-shadow: 0 0 18px var(--indigo-glow), 0 0 40px rgba(122, 95, 201, 0.15);
+    }
+
+    94% {
+        text-shadow: 0 0 8px var(--indigo-glow), 0 0 16px rgba(122, 95, 201, 0.08);
+    }
+
+    96% {
+        text-shadow: 0 0 22px var(--bile-glow), 0 0 46px rgba(92, 122, 60, 0.2);
+    }
+}
+
+header p {
+    margin: 0.7rem 0 0;
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--parchment-dim);
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+}
+
+nav {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: min(100%, 900px);
+    margin: 0 auto;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+nav a {
+    font-family: var(--font-title);
+    font-size: 0.92rem;
+    letter-spacing: 0.15em;
+    color: bisque;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--parchment);
+    border-color: var(--bile-glow);
+}
+
+nav a.active {
+    color: var(--indigo-glow);
+    border-color: var(--indigo-glow);
+    text-shadow: 0 0 10px rgba(122, 95, 201, 0.5);
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 1.1rem 1rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-title);
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    line-height: 1.8;
+    color: var(--parchment-dim);
+    opacity: 0.9;
+}
+
+footer a {
+    color: bisque;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--parchment);
+    border-color: var(--bile-glow);
+
+}
+
+footer .clickable button,
+a {
+    cursor: pointer;
+}

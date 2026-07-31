@@ -1,0 +1,96 @@
+body {
+    overflow: hidden;
+}
+
+#universe {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.book-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+    z-index: 2;
+}
+
+.book-wrap img {
+    display: block;
+    width: 80px;
+    height: auto;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 0px var(--indigo-glow);
+    cursor: pointer;
+    filter: grayscale(0.65) sepia(0.2) hue-rotate(60deg) brightness(0.7) contrast(1.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.45s ease;
+    transform-origin: center center;
+}
+
+.book-wrap.active img {
+    transform: scale(1.65);
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.85), 0 0 34px rgba(122, 95, 201, 0.45);
+    filter: none;
+    z-index: 10;
+}
+
+.book-wrap.dimmed img {
+    opacity: 0.3;
+    filter: grayscale(0.85) brightness(0.45);
+}
+
+#info-card {
+    position: fixed;
+    z-index: 20;
+    max-width: 260px;
+    background: var(--card-bg);
+    border: 1px solid var(--indigo-glow);
+    box-shadow: 0 0 24px rgba(122, 95, 201, 0.2);
+    padding: 14px 16px;
+    color: var(--parchment);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    backdrop-filter: blur(6px);
+}
+
+#info-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#info-card h2 {
+    margin: 0 0 8px;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: var(--indigo-glow);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+}
+
+#info-card p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--parchment-dim);
+}
+
+footer {
+    position: fixed;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+    font-family: var(--font-title);
+    font-size: 0.68rem;
+    line-height: 1.6;
+    color: var(--parchment-dim);
+    opacity: 0.55;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0;
+}
