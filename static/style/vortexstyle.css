@@ -58,6 +58,7 @@ body {
     transition: opacity 0.25s ease, transform 0.25s ease;
     pointer-events: none;
     backdrop-filter: blur(6px);
+    font-size: 0.95rem;
 }
 
 #info-card.visible {
@@ -68,7 +69,7 @@ body {
 #info-card h2 {
     margin: 0 0 8px;
     font-family: var(--font-title);
-    font-size: 1rem;
+    font-size: 1.15rem;
     letter-spacing: 0.06em;
     color: var(--indigo-glow);
     border-bottom: 1px solid var(--line);
@@ -78,8 +79,8 @@ body {
 #info-card p {
     margin: 0;
     font-family: var(--font-body);
-    font-size: 0.86rem;
-    line-height: 1.55;
+    font-size: 0.92rem;
+    line-height: 1.6;
     color: var(--parchment-dim);
 }
 
@@ -94,7 +95,7 @@ body {
 #info-card .card-label {
     display: block;
     margin-bottom: 4px;
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--indigo-glow);
@@ -107,13 +108,39 @@ body {
 
 #info-card .info-comments li {
     margin-bottom: 4px;
-    font-size: 0.84rem;
-    line-height: 1.45;
+    font-size: 0.9rem;
+    line-height: 1.5;
     color: var(--parchment-dim);
 }
 
 #info-card .empty-comment {
     font-style: italic;
+}
+
+@media (max-width: 480px) {
+    #info-card {
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        min-width: 0;
+        max-height: 52vh;
+        padding: 16px;
+    }
+
+    #info-card h2 {
+        font-size: 1.2rem;
+    }
+
+    #info-card p {
+        font-size: 0.97rem;
+    }
+
+    #info-card .card-label {
+        font-size: 0.78rem;
+    }
+
+    #info-card .info-comments li {
+        font-size: 0.94rem;
+    }
 }
 
 footer {

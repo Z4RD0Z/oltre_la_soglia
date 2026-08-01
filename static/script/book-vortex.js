@@ -87,8 +87,18 @@ function renderFeedbackList(feedback) {
 }
 
 function positionInfoCard(clientX, clientY) {
-    const cardWidth = Math.min(infoCard.offsetWidth || 280, W - 16);
+    const isMobile = W <= 480;
+    const cardWidth = Math.min(infoCard.offsetWidth || (isMobile ? W - 20 : 340), W - 16);
     const cardHeight = Math.min(infoCard.offsetHeight || 160, H - 16);
+
+    if (isMobile) {
+        const left = Math.max(10, (W - cardWidth) / 2);
+        const top = Math.max(topBound + 8, Math.min((H - cardHeight) / 2, H - cardHeight - 8));
+
+        infoCard.style.left = left + 'px';
+        infoCard.style.top = top + 'px';
+        return;
+    }
 
     let left = clientX + 18;
     let top = clientY + 18;
