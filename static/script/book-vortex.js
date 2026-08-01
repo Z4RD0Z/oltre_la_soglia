@@ -72,6 +72,29 @@ const items = books.map((book) => {
 
 let hovered = null;
 
+function showBookCard(it, clientX, clientY) {
+    hovered = it;
+    it.paused = true;
+    it.wrap.classList.add('active');
+    items.forEach(other => {
+        if (other !== it) other.wrap.classList.add('dimmed');
+    });
+
+    infoCard.innerHTML = `<h2>${it.book.title}</h2><p><strong>Autore:</strong> ${it.book.author}</p><p><strong>Stato lettura:</strong> ${it.book.status}</p>${renderFeedbackList(it.book.feedback)}<p><strong>Voto:</strong> ${it.book.score}</p>`;
+    infoCard.classList.add('visible');
+    positionInfoCard(clientX, clientY);
+}
+
+function hideBookCard() {
+    if (!hovered) return;
+
+    hovered.paused = false;
+    hovered.wrap.classList.remove('active');
+    items.forEach(other => other.wrap.classList.remove('dimmed'));
+    infoCard.classList.remove('visible');
+    hovered = null;
+}
+
 function renderFeedbackList(feedback) {
     const comments = Array.isArray(feedback) ? feedback.filter(Boolean) : [];
 
@@ -177,16 +200,7 @@ requestAnimationFrame(animate);
 
 items.forEach(it => {
     it.img.addEventListener('mouseenter', (e) => {
-        hovered = it;
-        it.paused = true;
-        it.wrap.classList.add('active');
-        items.forEach(other => {
-            if (other !== it) other.wrap.classList.add('dimmed');
-        });
-
-        infoCard.innerHTML = `<h2>${it.book.title}</h2><p><strong>Autore:</strong> ${it.book.author}</p><p><strong>Stato lettura:</strong> ${it.book.status}</p>${renderFeedbackList(it.book.feedback)}<p><strong>Voto:</strong> ${it.book.score}</p>`;
-        infoCard.classList.add('visible');
-        positionInfoCard(e.clientX, e.clientY);
+        showBookCard(it, e.clientX, e.clientY);
     });
 
     it.img.addEventListener('mousemove', (e) => {
@@ -196,10 +210,27 @@ items.forEach(it => {
     });
 
     it.img.addEventListener('mouseleave', () => {
-        it.paused = false;
-        it.wrap.classList.remove('active');
-        items.forEach(other => other.wrap.classList.remove('dimmed'));
-        infoCard.classList.remove('visible');
-        hovered = null;
+        hideBookCard();
     });
+
+    it.img.addEventListener('touchstart', (e) => {
+        const touch = e.changedTouches[0] || e.touches[0];
+        if (!touch) return;
+        showBookCard(it, touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    it.img.addEventListener('touchmove', (e) => {
+        const touch = e.changedTouches[0] || e.touches[0];
+        if (hovered === it && touch) {
+            positionInfoCard(touch.clientX, touch.clientY);
+        }
+    }, { passive: true });
 });
+
+document.addEventListener('touchstart', (e) => {
+    if (!hovered) return;
+    const touchedBook = e.target.closest('.book-wrap');
+    if (!touchedBook) {
+        hideBookCard();
+    }
+}, { passive: true });
