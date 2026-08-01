@@ -44,7 +44,10 @@ body {
 #info-card {
     position: fixed;
     z-index: 20;
-    max-width: 260px;
+    width: min(360px, calc(100vw - 24px));
+    max-width: min(360px, 82vw);
+    min-width: 220px;
+    box-sizing: border-box;
     background: var(--card-bg);
     border: 1px solid var(--indigo-glow);
     box-shadow: 0 0 24px rgba(122, 95, 201, 0.2);
@@ -78,6 +81,39 @@ body {
     font-size: 0.86rem;
     line-height: 1.55;
     color: var(--parchment-dim);
+}
+
+#info-card strong {
+    color: var(--parchment);
+}
+
+#info-card .card-section {
+    margin-top: 8px;
+}
+
+#info-card .card-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--indigo-glow);
+}
+
+#info-card .info-comments {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+#info-card .info-comments li {
+    margin-bottom: 4px;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: var(--parchment-dim);
+}
+
+#info-card .empty-comment {
+    font-style: italic;
 }
 
 footer {

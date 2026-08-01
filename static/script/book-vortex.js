@@ -4,13 +4,22 @@ const books = [
         image: "https://covers.openlibrary.org/b/isbn/0441063012-M.jpg",
         title: "I Simulacri",
         author: "P.K. Dick",
-        score: "Puzzo dunque sono / 10"
+        status: "Letto Luglio 2026",
+        feedback: [
+            "Il mio voto è puzzo dunque sono su 10",
+            "Voglio dei vicini simulacri, meglio se contadini.",
+            "Voglio un vicino chupper !",
+            "Sorprendentemente attuale e ricco di spunti di riflessione, nonostante sia stato scritto nel 1964. Pecca nella gestione della coralità.",
+        ],
+        score: "3/5"
     },
     {
         image: "https://covers.openlibrary.org/b/isbn/8878247448-M.jpg",
         title: "Cose Preziose",
         author: "Stephen King",
-        score: "Lettura in corso"
+        status: "Lettura in corso",
+        feedback: [],
+        score: "0/5"
     },
 ];
 
@@ -62,6 +71,42 @@ const items = books.map((book) => {
 });
 
 let hovered = null;
+
+function renderFeedbackList(feedback) {
+    const comments = Array.isArray(feedback) ? feedback.filter(Boolean) : [];
+
+    if (!comments.length) {
+        return `<div class="card-section"><span class="card-label">Commenti</span><p class="empty-comment">Nessun commento ancora.</p></div>`;
+    }
+
+    const list = comments
+        .map(comment => `<li>${comment}</li>`)
+        .join('');
+
+    return `<div class="card-section"><span class="card-label">Alcuni dei nostri commenti</span><ul class="info-comments">${list}</ul></div>`;
+}
+
+function positionInfoCard(clientX, clientY) {
+    const cardWidth = Math.min(infoCard.offsetWidth || 280, W - 16);
+    const cardHeight = Math.min(infoCard.offsetHeight || 160, H - 16);
+
+    let left = clientX + 18;
+    let top = clientY + 18;
+
+    if (left + cardWidth > W - 8) {
+        left = clientX - cardWidth - 18;
+    }
+
+    if (top + cardHeight > H - 8) {
+        top = clientY - cardHeight - 18;
+    }
+
+    left = Math.max(8, Math.min(left, W - cardWidth - 8));
+    top = Math.max(topBound + 8, Math.min(top, H - cardHeight - 8));
+
+    infoCard.style.left = left + 'px';
+    infoCard.style.top = top + 'px';
+}
 
 function resize() {
     W = window.innerWidth;
@@ -121,7 +166,7 @@ function animate(now) {
 requestAnimationFrame(animate);
 
 items.forEach(it => {
-    it.img.addEventListener('mouseenter', () => {
+    it.img.addEventListener('mouseenter', (e) => {
         hovered = it;
         it.paused = true;
         it.wrap.classList.add('active');
@@ -129,18 +174,15 @@ items.forEach(it => {
             if (other !== it) other.wrap.classList.add('dimmed');
         });
 
-        infoCard.innerHTML = `<h2>${it.book.title}</h2><p>${it.book.author}</p><p>${it.book.score}</p>`;
+        infoCard.innerHTML = `<h2>${it.book.title}</h2><p><strong>Autore:</strong> ${it.book.author}</p><p><strong>Stato lettura:</strong> ${it.book.status}</p>${renderFeedbackList(it.book.feedback)}<p><strong>Voto:</strong> ${it.book.score}</p>`;
         infoCard.classList.add('visible');
+        positionInfoCard(e.clientX, e.clientY);
     });
 
     it.img.addEventListener('mousemove', (e) => {
-        const pad = 18;
-        let left = e.clientX + pad;
-        let top = e.clientY + pad;
-        if (left + 260 > W) left = e.clientX - 260 - pad;
-        if (top + 120 > H) top = e.clientY - 120 - pad;
-        infoCard.style.left = left + 'px';
-        infoCard.style.top = top + 'px';
+        if (hovered === it) {
+            positionInfoCard(e.clientX, e.clientY);
+        }
     });
 
     it.img.addEventListener('mouseleave', () => {
