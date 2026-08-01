@@ -11,7 +11,7 @@ const books = [
             "Voglio un vicino chupper !",
             "Sorprendentemente attuale e ricco di spunti di riflessione, nonostante sia stato scritto nel 1964. Pecca nella gestione della coralità.",
         ],
-        score: "3/5"
+        score: "3"
     },
     {
         image: "https://covers.openlibrary.org/b/isbn/8878247448-M.jpg",
@@ -19,7 +19,7 @@ const books = [
         author: "Stephen King",
         status: "Lettura in corso",
         feedback: [],
-        score: "0/5"
+        score: "0"
     },
 ];
 
@@ -80,7 +80,13 @@ function showBookCard(it, clientX, clientY) {
         if (other !== it) other.wrap.classList.add('dimmed');
     });
 
-    infoCard.innerHTML = `<h2>${it.book.title}</h2><p><strong>Autore:</strong> ${it.book.author}</p><p><strong>Stato lettura:</strong> ${it.book.status}</p>${renderFeedbackList(it.book.feedback)}<p><strong>Voto:</strong> ${it.book.score}</p>`;
+    infoCard.innerHTML = `
+  <h2>${it.book.title}</h2>
+  <p><strong>Autore:</strong> ${it.book.author}</p>
+  <p><strong>Stato lettura:</strong> ${it.book.status}</p>
+  ${renderFeedbackList(it.book.feedback)}
+  <p><strong>Voto:</strong> ${renderTentacleScore(it.book.score, 5)}</p>
+`;
     infoCard.classList.add('visible');
     positionInfoCard(clientX, clientY);
 }
@@ -93,6 +99,13 @@ function hideBookCard() {
     items.forEach(other => other.wrap.classList.remove('dimmed'));
     infoCard.classList.remove('visible');
     hovered = null;
+}
+
+function renderTentacleScore(score, max = 5) {
+    const filled = Math.max(0, Math.min(score, max));
+    return Array.from({ length: max }, (_, i) =>
+        `<img class="tentacle-score-icon" src="static/assets/icons/tentacle-icon-white.png" alt="tentacolo" ${i < filled ? '' : 'style="opacity:0.25;"'}>`
+    ).join('');
 }
 
 function renderFeedbackList(feedback) {

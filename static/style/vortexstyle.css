@@ -117,6 +117,14 @@ body {
     font-style: italic;
 }
 
+.tentacle-score-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+    vertical-align: middle;
+    color: var(--white)
+}
+
 @media (max-width: 480px) {
     #info-card {
         width: calc(100vw - 20px);
