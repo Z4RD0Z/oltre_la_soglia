@@ -18,7 +18,7 @@
 
             <nav>
               <a href="index.html" data-page="about">About</a>
-              <a href="vortice-libri.html" data-page="books">Le nostre letture</a>
+              <a href="libri.html" data-page="books">Le nostre letture</a>
               <a href="archivio.html" data-page="archive">Archivio</a>
 
             </nav>
