@@ -1,6 +1,7 @@
 
 const books = [
     {
+        id: 1,
         image: "https://covers.openlibrary.org/b/isbn/0441063012-M.jpg",
         title: "I Simulacri",
         author: "P.K. Dick",
@@ -14,6 +15,7 @@ const books = [
         score: "3"
     },
     {
+        id: 2,
         image: "https://covers.openlibrary.org/b/isbn/8878247448-M.jpg",
         title: "Cose Preziose",
         author: "Stephen King",
@@ -67,6 +69,10 @@ const items = books.map((book) => {
         it.halfH = r.height / 2;
     });
 
+    it.img.addEventListener('click', () => {
+        window.location.href = `libro.html?id=${it.book.id}`;
+    });
+
     return it;
 });
 
@@ -81,7 +87,7 @@ function showBookCard(it, clientX, clientY) {
     });
 
     infoCard.innerHTML = `
-  <h2>${it.book.title}</h2>
+  <h2>${it.book.title}</a></h2>
   <p><strong>Autore:</strong> ${it.book.author}</p>
   <p><strong>Stato lettura:</strong> ${it.book.status}</p>
   ${renderFeedbackList(it.book.feedback)}
