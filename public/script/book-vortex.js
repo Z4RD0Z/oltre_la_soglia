@@ -104,7 +104,7 @@ function hideBookCard() {
 function renderTentacleScore(score, max = 5) {
     const filled = Math.max(0, Math.min(score, max));
     return Array.from({ length: max }, (_, i) =>
-        `<img class="tentacle-score-icon" src="static/assets/icons/tentacle-icon-white.png" alt="tentacolo" ${i < filled ? '' : 'style="opacity:0.25;"'}>`
+        `<img class="tentacle-score-icon" src="public/assets/icons/tentacle-icon-white.png" alt="tentacolo" ${i < filled ? '' : 'style="opacity:0.25;"'}>`
     ).join('');
 }
 
