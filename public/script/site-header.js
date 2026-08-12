@@ -1,9 +1,11 @@
-(function () {
+( function ()
+{
   const page = document.body.dataset.page || 'about';
-  const headerRoot = document.getElementById('site-header');
-  const footerRoot = document.getElementById('site-footer');
+  const headerRoot = document.getElementById( 'site-header' );
+  const footerRoot = document.getElementById( 'site-footer' );
 
-  if (headerRoot) {
+  if ( headerRoot )
+  {
     const headerMarkup = `
             <svg class="sigil" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" fill="none" stroke="#cdd1c2" stroke-width="0.6"/>
@@ -26,14 +28,16 @@
 
     headerRoot.innerHTML = headerMarkup;
 
-    const activeLink = headerRoot.querySelector(`[data-page="${page}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
+    const activeLink = headerRoot.querySelector( `[data-page="${page}"]` );
+    if ( activeLink )
+    {
+      activeLink.classList.add( 'active' );
     }
   }
 
-  if (footerRoot) {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  if ( footerRoot )
+  {
+    const currentPage = window.location.pathname.split( '/' ).pop() || 'index.html';
     const showLegalLink = currentPage !== 'termini-condizioni.html';
 
     const footerMarkup = `
@@ -50,4 +54,4 @@
         `;
     footerRoot.innerHTML = footerMarkup;
   }
-})();
+} )();
