@@ -1,23 +1,28 @@
-
 #title {
   margin: 0 0 8px;
-    font-family: var(--font-title);
-    font-size: 1.15rem;
-    letter-spacing: 0.06em;
-    color: var(--indigo-glow);
-    text-align: center;
-    
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  color: var(--indigo-glow);
+  text-align: center;
+
 }
 
 #content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 2rem auto 3rem;
-    padding: 0 1rem;
-    font-family: var(--font-title);
-    font-size: 1.15rem;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+
+}
+
+#content p {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+  text-align: center;
 }

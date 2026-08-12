@@ -23,7 +23,6 @@ body {
     height: auto;
     border: 1px solid var(--line);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 0px var(--indigo-glow);
-    cursor: pointer;
     filter: grayscale(0.65) sepia(0.2) hue-rotate(60deg) brightness(0.7) contrast(1.05);
     transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.45s ease;
     transform-origin: center center;
