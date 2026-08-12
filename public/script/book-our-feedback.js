@@ -5,7 +5,7 @@ const bookName = params.get('name');
 if (!bookID || !/^[a-zA-Z0-9_-]+$/.test(bookID)) {
     document.getElementById('content').innerHTML = '<p>Parametro non valido.</p>';
 } else {
-    fetch(`/static/documents/${encodeURIComponent(bookID)}/index.md`)
+    fetch(`/public/documents/${encodeURIComponent(bookID)}/index.md`)
         .then(r => {
             if (!r.ok) throw new Error(r.status);
             return r.text();
@@ -20,7 +20,7 @@ if (!bookID || !/^[a-zA-Z0-9_-]+$/.test(bookID)) {
             document.getElementById('content').innerHTML = marked.parse(md);
         })
         .catch(err => {
-            console.log(err);
+
             if (err.message === '404') {
                 document.getElementById('content').innerHTML = '<p>Non esistono ancora pareri per il libro selezionato.</p>';
             } else {

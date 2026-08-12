@@ -63,8 +63,8 @@ const items = books.map((book) => {
     });
 
     it.img.addEventListener('click', () => {
-        window.location.href = `libro.html?id=${it.book.id}&name=${it.book.title}`;
-    });
+    window.location.href = `libro.html?id=${encodeURIComponent(it.book.id)}&name=${encodeURIComponent(it.book.title)}`;
+});
 
     return it;
 });
@@ -80,7 +80,7 @@ function showBookCard(it, clientX, clientY) {
     });
 
     infoCard.innerHTML = `
-  <h2>${it.book.title}</a></h2>
+  <h2>${it.book.title}</h2>
   <p><strong>Autore:</strong> ${it.book.author}</p>
   <p><strong>Stato lettura:</strong> ${it.book.status}</p>
   <p><strong>Voto:</strong> ${renderTentacleScore(it.book.score, 5)}</p>

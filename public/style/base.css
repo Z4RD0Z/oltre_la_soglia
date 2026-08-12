@@ -13,6 +13,39 @@
     --font-body: 'IM Fell English', 'Georgia', serif;
 }
 
+/* im-fell-english-sc-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'IM Fell English SC';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/im-fell-english-sc-v16-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+/* im-fell-english-regular - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'IM Fell English';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/im-fell-english-v14-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* im-fell-english-italic - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'IM Fell English';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/im-fell-english-v14-latin-italic.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
 * {
     box-sizing: border-box;
 }
