@@ -1,9 +1,11 @@
+
 #title {
-     margin: 0 0 8px;
+  margin: 0 0 8px;
     font-family: var(--font-title);
     font-size: 1.15rem;
     letter-spacing: 0.06em;
     color: var(--indigo-glow);
+    text-align: center;
     
 }
 
@@ -13,4 +15,9 @@
     max-width: 900px;
     margin: 2rem auto 3rem;
     padding: 0 1rem;
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    
 }
