@@ -13,11 +13,7 @@ This site uses external resources and references them here for clarity:
 - Google Fonts
   - IM Fell English
   - IM Fell English SC
-  - Source: https://fonts.googleapis.com
-
-- Font Awesome
-  - Used for icons in the interface.
-  - Source: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+  - Source: static folder on project server
 
 - Open Library
   - Used to display book cover references.
