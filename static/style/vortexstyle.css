@@ -17,6 +17,11 @@ body {
     z-index: 2;
 }
 
+.book-wrap,
+.book-wrap img {
+    cursor: url('../assets/icons/cursor.png') 24 24, pointer;
+}
+
 .book-wrap img {
     display: block;
     width: 80px;
