@@ -17,13 +17,17 @@ body {
     z-index: 2;
 }
 
+.book-wrap,
+.book-wrap img {
+    cursor: url('../assets/icons/cursor.png') 24 24, pointer;
+}
+
 .book-wrap img {
     display: block;
     width: 80px;
     height: auto;
     border: 1px solid var(--line);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 0px var(--indigo-glow);
-    cursor: pointer;
     filter: grayscale(0.65) sepia(0.2) hue-rotate(60deg) brightness(0.7) contrast(1.05);
     transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.45s ease;
     transform-origin: center center;
@@ -157,11 +161,6 @@ footer {
     width: 100%;
     text-align: center;
     z-index: 3;
-    font-family: var(--font-title);
-    font-size: 0.68rem;
-    line-height: 1.6;
-    color: var(--parchment-dim);
-    opacity: 0.55;
-    letter-spacing: 0.15em;
+    border-top: 1px solid var(--line);
     padding: 0.4rem 0;
 }
