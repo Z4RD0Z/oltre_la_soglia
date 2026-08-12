@@ -161,11 +161,6 @@ footer {
     width: 100%;
     text-align: center;
     z-index: 3;
-    font-family: var(--font-title);
-    font-size: 0.68rem;
-    line-height: 1.6;
-    color: var(--parchment-dim);
-    opacity: 0.55;
-    letter-spacing: 0.15em;
+    border-top: 1px solid var(--line);
     padding: 0.4rem 0;
 }

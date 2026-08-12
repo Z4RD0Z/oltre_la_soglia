@@ -25,6 +25,9 @@ body {
     background: var(--void);
     font-family: var(--font-body);
     color: var(--parchment);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 body::before {
