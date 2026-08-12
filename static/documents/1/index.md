@@ -1,3 +1,4 @@
-- test
-- second
-- third
+- "Il mio voto è puzzo dunque sono su 10"
+- "Voglio dei vicini simulacri, meglio se contadini."
+- "Voglio un vicino chupper !"
+- "Sorprendentemente attuale e ricco di spunti di riflessione, nonostante sia stato scritto nel 1964. Pecca nella gestione della coralità."

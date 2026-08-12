@@ -1,8 +1,10 @@
 const params = new URLSearchParams(window.location.search);
-const articleID = params.get('id');
+const bookID = params.get('id');
+const bookName = params.get('name');
 
-fetch(`/static/documents/${articleID}/index.md`)
+fetch(`/static/documents/${bookID}/index.md`)
     .then(r => r.text()).then(md => {
+        document.getElementById('title').innerHTML = `<h2>${bookName}</h2>`;
         document.getElementById('content').innerHTML = marked.parse(md);
     }).catch(err => {
         console.error(err);

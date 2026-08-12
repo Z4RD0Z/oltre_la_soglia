@@ -6,12 +6,6 @@ const books = [
         title: "I Simulacri",
         author: "P.K. Dick",
         status: "Letto Luglio 2026",
-        feedback: [
-            "Il mio voto è puzzo dunque sono su 10",
-            "Voglio dei vicini simulacri, meglio se contadini.",
-            "Voglio un vicino chupper !",
-            "Sorprendentemente attuale e ricco di spunti di riflessione, nonostante sia stato scritto nel 1964. Pecca nella gestione della coralità.",
-        ],
         score: "3"
     },
     {
@@ -20,7 +14,6 @@ const books = [
         title: "Cose Preziose",
         author: "Stephen King",
         status: "Lettura in corso",
-        feedback: [],
         score: "0"
     },
 ];
@@ -70,7 +63,7 @@ const items = books.map((book) => {
     });
 
     it.img.addEventListener('click', () => {
-        window.location.href = `libro.html?id=${it.book.id}`;
+        window.location.href = `libro.html?id=${it.book.id}&name=${it.book.title}`;
     });
 
     return it;
@@ -90,7 +83,6 @@ function showBookCard(it, clientX, clientY) {
   <h2>${it.book.title}</a></h2>
   <p><strong>Autore:</strong> ${it.book.author}</p>
   <p><strong>Stato lettura:</strong> ${it.book.status}</p>
-  ${renderFeedbackList(it.book.feedback)}
   <p><strong>Voto:</strong> ${renderTentacleScore(it.book.score, 5)}</p>
 `;
     infoCard.classList.add('visible');
@@ -112,20 +104,6 @@ function renderTentacleScore(score, max = 5) {
     return Array.from({ length: max }, (_, i) =>
         `<img class="tentacle-score-icon" src="static/assets/icons/tentacle-icon-white.png" alt="tentacolo" ${i < filled ? '' : 'style="opacity:0.25;"'}>`
     ).join('');
-}
-
-function renderFeedbackList(feedback) {
-    const comments = Array.isArray(feedback) ? feedback.filter(Boolean) : [];
-
-    if (!comments.length) {
-        return `<div class="card-section"><span class="card-label">Commenti</span><p class="empty-comment">Nessun commento ancora.</p></div>`;
-    }
-
-    const list = comments
-        .map(comment => `<li>${comment}</li>`)
-        .join('');
-
-    return `<div class="card-section"><span class="card-label">Alcuni dei nostri commenti</span><ul class="info-comments">${list}</ul></div>`;
 }
 
 function positionInfoCard(clientX, clientY) {
