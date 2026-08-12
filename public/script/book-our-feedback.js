@@ -5,11 +5,11 @@ const bookName = params.get('name');
 if (!bookID || !/^[a-zA-Z0-9_-]+$/.test(bookID)) {
     document.getElementById('content').innerHTML = '<p>Parametro non valido.</p>';
 } else {
-    fetch(`/public/documents/${encodeURIComponent(bookID)}/index.md`)
-        .then(r => {
-            if (!r.ok) throw new Error(r.status);
-            return r.text();
-        })
+    const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+    fetch(`${basePath}/public/documents/${encodeURIComponent(bookID)}/index.md`).then(r => {
+        if (!r.ok) throw new Error(r.status);
+        return r.text();
+    })
         .then(md => {
             const titleEl = document.getElementById('title');
             titleEl.innerHTML = '';
