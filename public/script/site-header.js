@@ -42,7 +42,7 @@
 
     const footerMarkup = `
             <footer>
-  Fatto con <i class="fa fa-heart"></i> da <a href="https://github.com/Z4RD0Z">Z4RD0Z</a><br>
+  Realizzato da <a href="https://github.com/Z4RD0Z">Z4RD0Z</a><br>
   © 2026 Oltre la soglia — tutte le soglie appartengono al loro custode<br>
   ${page === 'books'
         ? 'Copertine e riferimenti bibliografici via OpenLibrary<br>'
