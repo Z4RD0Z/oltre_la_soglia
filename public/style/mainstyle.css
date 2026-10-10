@@ -30,3 +30,15 @@ main .paragraph-block {
 main .about-list {
     font-size: 1.35rem;
 }
+
+main a {
+    color: bisque;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+main a:hover {
+    color: var(--parchment);
+    border-color: var(--bile-glow);
+}

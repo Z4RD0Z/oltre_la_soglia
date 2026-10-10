@@ -13,9 +13,16 @@ const books = [
         image: "https://covers.openlibrary.org/b/isbn/8878247448-M.jpg",
         title: "Cose Preziose",
         author: "Stephen King",
+        status: "Letto Settembre 2026",
+        score: "4.5"
+    },
+    {   id: 3,
+	image: "https://covers.openlibrary.org/b/isbn/8875210977-M.jpg",
+        title: "L'uomo che cadde sulla Terra",
+        author: "Walter Tevis",
         status: "Lettura in corso",
         score: "0"
-    },
+    }
 ];
 
 const universe = document.getElementById( 'universe' );
@@ -105,12 +112,35 @@ function hideBookCard ()
     hovered = null;
 }
 
+function parseTentacleScore ( score, max = 5 )
+{
+    if ( typeof score === 'number' && Number.isFinite( score ) )
+    {
+        return Math.max( 0, Math.min( score, max ) );
+    }
+    const normalized = String( score ?? '0' ).replace( ',', '.' ).split( '/' )[ 0 ].trim();
+    const parsed = parseFloat( normalized );
+    if ( !Number.isFinite( parsed ) ) return 0;
+    return Math.max( 0, Math.min( parsed, max ) );
+}
+
 function renderTentacleScore ( score, max = 5 )
 {
-    const filled = Math.max( 0, Math.min( score, max ) );
+    const filled = parseTentacleScore( score, max );
+    const src = 'public/assets/icons/tentacle-icon-white.png';
     return Array.from( { length: max }, ( _, i ) =>
-        `<img class="tentacle-score-icon" src="public/assets/icons/tentacle-icon-white.png" alt="tentacolo" ${i < filled ? '' : 'style="opacity:0.25;"'}>`
-    ).join( '' );
+    {
+        const fill = filled - i;
+        if ( fill >= 1 )
+        {
+            return `<img class="tentacle-score-icon" src="${src}" alt="tentacolo pieno">`;
+        }
+        if ( fill >= 0.5 )
+        {
+            return `<span class="tentacle-half" role="img" aria-label="mezzo tentacolo"><img class="tentacle-score-icon is-empty" src="${src}" alt=""><img class="tentacle-score-icon is-half" src="${src}" alt=""></span>`;
+        }
+        return `<img class="tentacle-score-icon is-empty" src="${src}" alt="tentacolo vuoto" style="opacity:0.25;">`;
+    } ).join( '' );
 }
 
 function positionInfoCard ( clientX, clientY )

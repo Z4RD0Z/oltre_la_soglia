@@ -1,0 +1,1 @@
+- Il mio voto è: il signore Gaunt è indubbiamente miglior giudic su 10 .

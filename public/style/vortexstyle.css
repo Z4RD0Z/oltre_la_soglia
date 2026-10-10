@@ -129,6 +129,29 @@ body {
     color: var(--white)
 }
 
+.tentacle-score-icon.is-empty {
+    opacity: 0.25;
+}
+
+.tentacle-half {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+
+.tentacle-half .tentacle-score-icon {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+}
+
+.tentacle-half .is-half {
+    clip-path: inset(0 50% 0 0);
+}
+
 @media (max-width: 480px) {
     #info-card {
         width: calc(100vw - 20px);
