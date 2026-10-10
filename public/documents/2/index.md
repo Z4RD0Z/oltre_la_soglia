@@ -1,1 +1,1 @@
-- Il mio voto è: il signore Gaunt è indubbiamente miglior giudice su 10 .
+- Il mio voto è: il signore Gaunt è indubbiamente il miglior giudice su 10 .
