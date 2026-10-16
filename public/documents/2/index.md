@@ -1,1 +1,2 @@
 - Il mio voto è: il signore Gaunt è indubbiamente il miglior giudice su 10 .
+- Castle Rock non è un posticino proprio tranquillo dove passare le vacanze e Cose Preziose è un libro e un negozio che trasuda cattiveria con un finale davvero pirotecnico!
