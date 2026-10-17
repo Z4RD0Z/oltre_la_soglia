@@ -37,8 +37,20 @@
 
   if ( footerRoot )
   {
-    const currentPage = window.location.pathname.split( '/' ).pop() || 'index.html';
-    const showLegalLink = currentPage !== 'termini-condizioni.html';
+    const currentPage = ( window.location.pathname.split( '/' ).pop() || 'index.html' )
+      .replace( /\.html$/, '' ) || 'index';
+    const showContactsLink = currentPage !== 'contatti';
+    const showLegalLink = currentPage !== 'termini-condizioni';
+    const footerLinks = [];
+
+    if ( showContactsLink )
+    {
+      footerLinks.push( '<a href="contatti.html">contatti</a>' );
+    }
+    if ( showLegalLink )
+    {
+      footerLinks.push( '<a href="termini-condizioni.html">termini e condizioni</a>' );
+    }
 
     const footerMarkup = `
             <footer>
@@ -47,9 +59,7 @@
   ${page === 'books'
         ? 'Copertine e riferimenti bibliografici via OpenLibrary<br>'
         : ''}
-  ${showLegalLink
-        ? '<a href="termini-condizioni.html">termini e condizioni</a>'
-        : ''}
+  ${footerLinks.join( ' · ' )}
 </footer>
         `;
     footerRoot.innerHTML = footerMarkup;
